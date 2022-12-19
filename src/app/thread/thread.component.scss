@@ -1,0 +1,65 @@
+@import "../../assets/variable.scss";
+
+.thread-box {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  height: calc(100vh - 128px);
+
+  .content {
+    overflow: auto;
+    padding: 0 $spacing-S;
+  }
+  app-input {
+    z-index: 100;
+    margin: 0 $spacing-S $spacing-S;
+  }
+}
+
+.message-box {
+  display: flex;
+  align-items: flex-start;
+  padding-top: $spacing-S;
+  img {
+    height: $spacing-L;
+    width: $spacing-L;
+    object-fit: cover;
+    margin-right: $spacing-S;
+    border-radius: $brd-radius;
+  }
+  .messages {
+    overflow: auto;
+  }
+  .message {
+    display: flex;
+    flex-direction: column;
+    max-width: 300px;
+
+    .message-header {
+      display: flex;
+      align-items: baseline;
+      h3 {
+        margin-right: $spacing-S;
+      }
+      span {
+        color: $white-tr;
+      }
+      .name {
+        margin-right: $spacing-XS;
+      }
+    }
+  }
+}
+
+.hr {
+  display: flex;
+  align-items: center;
+  margin: $spacing-M 0;
+  hr {
+    flex: auto;
+    margin-left: $spacing-S;
+    border: none;
+    border-top: 1px solid $white-tr;
+    clear: both;
+  }
+}

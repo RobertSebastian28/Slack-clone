@@ -1,0 +1,216 @@
+<div class="holder">
+  <div id="dialog"></div>
+  <form class="form">
+    <div class="icon-holder" *ngIf="formatting">
+      <p
+        (click)="openDialog()"
+        matTooltip="bold type"
+        matTooltipPosition="above"
+        matTooltipShowDelay="250"
+      >
+        B
+      </p>
+      <p
+        (click)="openDialog()"
+        matTooltip="italic type"
+        matTooltipPosition="above"
+        matTooltipShowDelay="250"
+      >
+        <i>I</i>
+      </p>
+      <p
+        (click)="openDialog()"
+        matTooltip="crossed out "
+        matTooltipPosition="above"
+        matTooltipShowDelay="250"
+      >
+        <s>S</s>
+      </p>
+      <div class="vr"></div>
+      <mat-icon
+        (click)="openDialog()"
+        matTooltip="link"
+        matTooltipPosition="above"
+        matTooltipShowDelay="250"
+        >add_link</mat-icon
+      >
+      <div
+        matTooltip=""
+        matTooltipPosition="above"
+        matTooltipShowDelay="250"
+        class="vr"
+      ></div>
+      <mat-icon
+        (click)="openDialog()"
+        matTooltip="numbered list"
+        matTooltipPosition="above"
+        matTooltipShowDelay="250"
+        >format_list_numbered</mat-icon
+      >
+      <mat-icon
+        (click)="openDialog()"
+        matTooltip="bullet list"
+        matTooltipPosition="above"
+        matTooltipShowDelay="250"
+        >format_list_bulleted</mat-icon
+      >
+      <div class="vr"></div>
+      <mat-icon
+        (click)="openDialog()"
+        matTooltip="block quote"
+        matTooltipPosition="above"
+        matTooltipShowDelay="250"
+        >align_horizontal_left</mat-icon
+      >
+      <div class="vr"></div>
+      <mat-icon
+        (click)="textToFunction()"
+        matTooltip="code"
+        matTooltipPosition="above"
+        matTooltipShowDelay="250"
+        >code</mat-icon
+      >
+      <mat-icon
+        (click)="textToCodeblock()"
+        matTooltip="code block"
+        matTooltipPosition="above"
+        matTooltipShowDelay="250"
+        >check_box_outline_blank</mat-icon
+      >
+    </div>
+
+    <emoji-mart
+      class="emoji-mart"
+      *ngIf="isEmojiPickerVisible"
+      (emojiSelect)="addEmoji($event)"
+      title="Choose your emoji"
+    ></emoji-mart>
+
+    <input
+      [(ngModel)]="inputField"
+      [ngModelOptions]="{ standalone: true }"
+      [class.functionFont]="functionText"
+      #input
+      placeholder="{{ component.textPlaceholder }} {{ component.channel }}"
+    />
+    <div class="img-preview-container">
+      <img class="img-preview" *ngIf="showPreview" [src]="fb" />
+      <mat-icon
+        class="deleteImg"
+        *ngIf="showPreview"
+        (click)="deleteImgStorage(fb)"
+        >delete_forever</mat-icon
+      >
+    </div>
+
+    <div class="icon-holder space-between">
+      <div class="icon-holder">
+        <div class="file-upload">
+          <mat-icon
+            (click)="fileInput.click()"
+            matTooltip="upload file"
+            matTooltipPosition="above"
+            matTooltipShowDelay="250"
+            class="white add"
+            >add</mat-icon
+          >
+          <input
+            class="upload-input"
+            hidden
+            #fileInput
+            (change)="uploadFile($event)"
+            type="file"
+            id="file"
+            name="image"
+            accept=".png, .jpg"
+          />
+        </div>
+
+        <div class="vr white"></div>
+        <mat-icon
+          (click)="openDialog()"
+          matTooltip="record video"
+          matTooltipPosition="above"
+          matTooltipShowDelay="250"
+          class="white"
+          >video_camera_front</mat-icon
+        >
+        <mat-icon
+          (click)="openDialog()"
+          matTooltip="record sound"
+          matTooltipPosition="above"
+          matTooltipShowDelay="250"
+          class="white"
+          >mic_none</mat-icon
+        >
+        <div class="vr white"></div>
+        <mat-icon
+          (click)="isEmojiPickerVisible = !isEmojiPickerVisible"
+          matTooltip="Emojis"
+          matTooltipPosition="above"
+          matTooltipShowDelay="250"
+          class="white"
+          >tag_faces</mat-icon
+        >
+        <p
+          (click)="openDialog()"
+          matTooltip="Link person"
+          matTooltipPosition="above"
+          matTooltipShowDelay="250"
+          class="white"
+        >
+          @
+        </p>
+
+        <ng-container *ngIf="formatting; then isTrue; else isFalse">
+        </ng-container>
+        <ng-template #isTrue>
+          <p
+            (click)="toggleFormatting()"
+            matTooltip="hide formatting"
+            matTooltipPosition="above"
+            matTooltipShowDelay="250"
+            class="white"
+          >
+            <u>Aa</u>
+          </p>
+        </ng-template>
+        <ng-template #isFalse>
+          <p
+            (click)="toggleFormatting()"
+            matTooltip="show formatting"
+            matTooltipPosition="above"
+            matTooltipShowDelay="250"
+            class="white"
+          >
+            Aa
+          </p>
+        </ng-template>
+      </div>
+
+      <div
+        class="icon-holder grey"
+        [ngClass]="{ 'green-send-btn': inputField.length > 0 }"
+      >
+        <button
+          [disabled]="inputField.length == 0"
+          mat-icon-button
+          (click)="sendMessage()"
+          matTooltip="send message "
+          matTooltipPosition="above"
+          matTooltipShowDelay="250"
+        >
+          <mat-icon>send</mat-icon>
+        </button>
+        <div class="vr"></div>
+        <mat-icon
+          (click)="openDialog()"
+          matTooltip=" "
+          matTooltipPosition="above"
+          matTooltipShowDelay="250"
+          >keyboard_arrow_down</mat-icon
+        >
+      </div>
+    </div>
+  </form>
+</div>

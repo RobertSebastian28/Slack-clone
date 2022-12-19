@@ -1,0 +1,49 @@
+<div class="sidebarMenu">
+  <div class="sidebarMenuChild">
+    <div>
+      <div class="sidebarIcon" (click)="showChannels()">
+        <mat-icon fontIcon="arrow_right"></mat-icon> Channels
+      </div>
+      <div *ngIf="channelsActive" class="channels">
+        <div
+          (click)="loadChannel(channel.name)"
+          class="sidebarIcon"
+          *ngFor="let channel of allChannels; let i = index"
+        >
+          <b> {{ channel.name }} </b>
+        </div>
+        <div class="sidebarIcon">
+          <b (click)="openChannelDialog()"> Channel hinzufügen </b>
+        </div>
+      </div>
+    </div>
+
+    <div>
+      <div class="sidebarIcon" (click)="showDirectMessages()">
+        <mat-icon fontIcon="arrow_right"></mat-icon> Direktnachrichten
+      </div>
+      <div *ngIf="directmessagesActive" class="channels">
+        <div
+          class="sidebarIcon"
+          *ngFor="let directMessage of directMessages; let i = index"
+        >
+          <b> {{ directMessages[i] }} </b>
+        </div>
+      </div>
+    </div>
+
+    <div>
+      <div class="sidebarIcon" (click)="showApps()">
+        <mat-icon fontIcon="arrow_right"></mat-icon> Apps
+      </div>
+      <div *ngIf="appsActive" class="channels">
+        <div class="sidebarIcon" *ngFor="let app of allApps; let i = index">
+          <b> {{ app.name }} </b>
+        </div>
+        <div class="sidebarIcon">
+          <b (click)="openAppDialog()"> App hinzufügen </b>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

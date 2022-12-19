@@ -1,0 +1,27 @@
+@import "../../../assets/variable.scss";
+
+.form-field {
+  width: 100%;
+}
+
+.goto-link {
+  margin-left: 15px;
+}
+
+.holder {
+  height: calc(100% - 64px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  mat-card {
+    background-color: $darkGray;
+  }
+  .form {
+    display: flex;
+    flex-direction: column;
+  }
+}
+
+.question {
+  margin: $spacing-M 0;
+}

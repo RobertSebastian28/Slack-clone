@@ -1,0 +1,50 @@
+<div class="holder">
+  <mat-card>
+    <mat-card-content>
+      <app-form title="Sign in for Slack-Clone?">
+        <form [formGroup]="form" (submit)="signIn()" class="form">
+          <mat-form-field appearance="outline" color="accent">
+            <mat-label>Email</mat-label>
+            <input
+              type="email"
+              matInput
+              formControlName="email"
+              placeholder="email"
+            />
+
+            <mat-error *ngIf="form.controls['email'].hasError('email')"
+              >Enter a valid email</mat-error
+            >
+          </mat-form-field>
+
+          <mat-form-field appearance="outline" color="accent">
+            <mat-label>Password</mat-label>
+
+            <input
+              type="password"
+              matInput
+              formControlName="password"
+              placeholder="Password"
+            />
+
+            <mat-error *ngIf="form.controls['password'].hasError('minlength')"
+              >Password is too short</mat-error
+            >
+          </mat-form-field>
+
+          <button mat-raised-button color="accent" [disabled]="form.invalid">
+            Sign In
+          </button>
+        </form>
+
+        <div class="question">
+          <p>You do not have an account?</p>
+        </div>
+
+        <button mat-raised-button color="accent" (click)="switchToSignUp()">
+          Create an account
+        </button>
+      </app-form>
+    </mat-card-content>
+  </mat-card>
+</div>

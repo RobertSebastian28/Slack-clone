@@ -1,0 +1,47 @@
+<div class="thread-box">
+  <div class="content" #content>
+    <div class="message-box">
+      <img src="../../assets/img/{{ curentThread.profilePic }}" alt="" />
+
+      <div class="message">
+        <div class="message-header">
+          <span class="name">{{ curentThread.userName }} </span>
+
+          <span>{{ convertTimeStamp(curentThread.timeStamp) }}</span>
+        </div>
+        <p>
+          {{ curentThread.message }}
+        </p>
+      </div>
+    </div>
+
+    <div class="hr">
+      <span *ngIf="curentThread.threadMessages.length > 0">
+        {{ curentThread.threadMessages.length }} Antworten</span
+      >
+      <hr />
+    </div>
+
+    <div class="messages" *ngFor="let message of curentThread.threadMessages">
+      <div class="message-box">
+        <img src="../../assets/img/{{ message.profilePic }}" alt="" />
+
+        <div class="message">
+          <div class="message-header">
+            <h3>{{ message.userName ? message.userName : "noName" }}</h3>
+            <span>{{ convertTimeStamp(message.timeStamp) }}</span>
+          </div>
+          <p>
+            {{ message.message }}
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <app-input
+    class="input"
+    [component]="component"
+    [curentThread]="curentThread"
+  ></app-input>
+</div>

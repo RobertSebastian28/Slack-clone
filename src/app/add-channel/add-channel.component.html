@@ -1,0 +1,15 @@
+<div class="addTopicDialog">
+    <h2> Channels erstellen </h2>
+    <div class="inputFields">
+        <div>
+            <p> Name </p>
+            <input [(ngModel)]="channel.name" required type="text" placeholder="z.B budget-planung">
+        </div>
+        <div>
+            <p>Beschreibung</p>
+            <input [(ngModel)]="channel.description" type="text">
+        </div>
+    </div>
+    <button mat-button mat-dialog-close>Abbrechen</button>
+    <button (click)="addChannel()" mat-button mat-dialog-close cdkFocusInitial>Erstellen</button>
+</div>

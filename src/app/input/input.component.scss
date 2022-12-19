@@ -1,0 +1,165 @@
+@import "../../assets/variable.scss";
+
+.holder {
+  border: 1px solid $white;
+  border-radius: $brd-radius;
+  padding: $spacing-XS;
+  background-color: $darkGray;
+
+  &:focus-within {
+    border: 1px solid $white;
+
+    form {
+      .icon-holder {
+        mat-icon,
+        p {
+          color: $white;
+        }
+      }
+    }
+  }
+
+  form {
+    width: 100%;
+    overflow: hidden;
+    cursor: text;
+
+    .icon-holder {
+      display: flex;
+      align-items: center;
+
+      button {
+        &:disabled {
+          mat-icon {
+            color: $grey-tr;
+            &:hover {
+              background-color: transparent;
+              cursor: not-allowed;
+            }
+          }
+        }
+      }
+      .add {
+        background-color: $grey-tr;
+      }
+
+      .white {
+        color: $white;
+        margin: $spacing-XS;
+      }
+
+      mat-icon,
+      .vr,
+      p {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        font-size: $icon-size-M;
+        margin: $spacing-XS;
+        color: $white;
+        height: $icon-size-M;
+        width: $icon-size-M;
+
+        img {
+          height: $icon-size-M;
+          width: $icon-size-M;
+          object-fit: cover;
+        }
+      }
+
+      mat-icon,
+      p {
+        border-radius: 50%;
+        padding: $spacing-XS;
+        cursor: pointer;
+
+        &:hover {
+          background-color: $grey;
+        }
+      }
+
+      p {
+        margin: 0;
+
+        &:first-child {
+          margin-left: $spacing-XS;
+        }
+
+        i {
+          margin-right: 3px;
+        }
+      }
+
+      .vr {
+        background-color: $grey;
+        height: $spacing-M;
+        width: 1px;
+      }
+
+      mat-icon {
+        width: unset;
+        height: unset;
+      }
+    }
+
+    input {
+      border: none;
+      margin: $spacing-XS 0;
+      background-color: transparent;
+      width: 100%;
+      padding: $spacing-XS;
+      font-size: $fontsize-p;
+      color: white;
+
+      &:focus {
+        outline: none;
+        color: $white;
+      }
+    }
+
+    .space-between {
+      display: flex;
+      justify-content: space-between;
+    }
+
+    .functionFont {
+      color: orangered;
+      width: 100%;
+      border: white;
+      background-color: gray;
+      border-radius: 8px;
+      font-size: 14px;
+    }
+  }
+}
+
+.img-preview-container {
+  display: flex;
+  position: relative;
+  justify-content: center;
+  align-items: flex-start;
+  flex-direction: column;
+
+  .img-preview {
+    display: flex;
+    max-width: 200px;
+    max-height: 200px;
+    margin-bottom: $spacing-XS;
+  }
+
+  .deleteImg {
+    display: flex;
+    position: absolute;
+    color: red;
+    top: $spacing-XS;
+    left: 176px;
+    &:hover {
+      cursor: pointer;
+    }
+  }
+}
+
+.green-send-btn {
+  background-color: green;
+  border-radius: $brd-radius;
+}

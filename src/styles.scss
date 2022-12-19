@@ -1,0 +1,45 @@
+/* You can add global styles to this file, and also import other style files */
+@import "./assets/variable.scss";
+@import "~@ctrl/ngx-emoji-mart/picker";
+/* width */
+::-webkit-scrollbar {
+  background-color: #444444;
+  width: 12px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+  border-radius: 5px;
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+  background: rgb(231, 229, 229);
+  border-radius: 24px;
+}
+
+html,
+body {
+  height: 100%;
+  overflow: overlay;
+}
+body {
+  margin: 0;
+  font-family: Roboto, "Helvetica Neue", sans-serif;
+  background-color: $black;
+  color: $white;
+}
+
+.addTopicDialog {
+  width: 350px;
+  input {
+    width: 100%;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    margin-bottom: 10px;
+  }
+
+  .inputFields {
+    padding-bottom: 10px;
+  }
+}

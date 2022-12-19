@@ -1,0 +1,108 @@
+<mat-drawer-container class="example-container">
+  <mat-drawer mode="side" opened>
+    <div class="sidebarHeader">
+      <mat-toolbar>
+        <span>Slack-Clone</span>
+      </mat-toolbar>
+    </div>
+    <div class="sidebar">
+      <app-sidebar (newSideTopingEvent)="updateChannel($event)"></app-sidebar>
+      <div class="sidebar-active">
+        <div matTooltip="Active-Sidebar" class="sidebar-active-text">
+          # {{ fire.actChannel }}
+        </div>
+      </div>
+    </div>
+  </mat-drawer>
+
+  <mat-drawer-content>
+    <mat-toolbar>
+      <span># {{ fire.actChannel }}</span>
+    </mat-toolbar>
+
+    <div class="channel-holder">
+      <div class="channel" #content>
+        <div
+          class="user"
+          *ngFor="let message of channel; let i = index"
+          id="user-container{{ i }}"
+        >
+          <img class="profile-pic" src="assets/img/{{ message.profilePic }}" />
+
+          <div class="message">
+            <div class="user-time-stamp">
+              <h3 class="user-name">{{ message.userName }}</h3>
+              <h3 class="time-stamp">
+                {{ convertTimeStamp(message.timeStamp) }}
+              </h3>
+            </div>
+
+            <span>{{ message.message }}</span>
+            <span>{{ message.functionText }}</span>
+
+            <img
+              class="uploaded-image"
+              *ngIf="message.pictureUrl"
+              [src]="message.pictureUrl"
+            />
+
+            <div
+              *ngIf="message.threadMessages.length > 0"
+              class="thread-answ"
+              (click)="openThread(message.ID); thread.open()"
+            >
+              {{ message.threadMessages.length }} Antworten
+              <div class="thread-answ-info">
+                <div class="open">
+                  Letzte Antwort
+                  {{
+                    convertTimeStamp(
+                      message.threadMessages[message.threadMessages.length - 1]
+                        .timeStamp
+                    )
+                  }}
+                </div>
+                <div class="hidden">Open Thread --></div>
+              </div>
+            </div>
+          </div>
+
+          <div class="icon-holder">
+            <div class="icon-bar">
+              <div class="emo" (click)="openDialog()">
+                {{ emojis.white_check_mark }}
+              </div>
+              <div class="emo" (click)="openDialog()">{{ emojis.eyes }}</div>
+              <div class="emo" (click)="openDialog()">
+                {{ emojis.open_hands }}
+              </div>
+              <mat-icon (click)="openDialog()">add_reaction</mat-icon>
+              <mat-icon (click)="openThread(message.ID); thread.open()"
+                >comment</mat-icon
+              >
+              <mat-icon (click)="openDialog()">reply</mat-icon>
+              <mat-icon (click)="openDialog()">add</mat-icon>
+              <mat-icon (click)="openDialog()">more_vert</mat-icon>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div id="dialog"></div>
+
+      <app-input class="input" [component]="component"></app-input>
+    </div>
+  </mat-drawer-content>
+
+  <mat-drawer #thread mode="side" closed position="end">
+    <mat-toolbar class="thread-header">
+      <div>
+        <h2>Thread</h2>
+        <span># {{ currentThreadHeadder }}</span>
+      </div>
+      <button mat-icon-button (click)="thread.close()">
+        <mat-icon>close</mat-icon>
+      </button>
+    </mat-toolbar>
+    <app-thread [curentThread]="curentThread"></app-thread>
+  </mat-drawer>
+</mat-drawer-container>
