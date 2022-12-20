@@ -193,7 +193,7 @@
         [ngClass]="{ 'green-send-btn': inputField.length > 0 }"
       >
         <button
-          [disabled]="inputField.length == 0"
+          [disabled]="inputField.length == 0 && !showPreview"
           mat-icon-button
           (click)="sendMessage()"
           matTooltip="send message "

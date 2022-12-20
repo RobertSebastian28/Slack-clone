@@ -59,8 +59,6 @@ export class OutputComponent implements OnInit {
     }, 1800);
   }
 
-  // Stefan ################################
-
   openThread(messageID: any) {
     this.fire.actMessID = messageID;
     this.fire
