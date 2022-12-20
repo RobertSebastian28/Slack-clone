@@ -31,19 +31,5 @@
         </div>
       </div>
     </div>
-
-    <div>
-      <div class="sidebarIcon" (click)="showApps()">
-        <mat-icon fontIcon="arrow_right"></mat-icon> Apps
-      </div>
-      <div *ngIf="appsActive" class="channels">
-        <div class="sidebarIcon" *ngFor="let app of allApps; let i = index">
-          <b> {{ app.name }} </b>
-        </div>
-        <div class="sidebarIcon">
-          <b (click)="openAppDialog()"> App hinzufügen </b>
-        </div>
-      </div>
-    </div>
   </div>
 </div>

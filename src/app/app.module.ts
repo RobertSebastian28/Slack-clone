@@ -37,7 +37,6 @@ import { MatCardModule } from '@angular/material/card';
 import { MatDialogModule } from '@angular/material/dialog';
 import { AddChannelComponent } from './add-channel/add-channel.component';
 import { FIREBASE_OPTIONS } from '@angular/fire/compat';
-import { AddAppComponent } from './add-app/add-app.component';
 import { PickerModule } from '@ctrl/ngx-emoji-mart';
 
 @NgModule({
@@ -54,7 +53,6 @@ import { PickerModule } from '@ctrl/ngx-emoji-mart';
     OutputComponent,
     ThreadComponent,
     AddChannelComponent,
-    AddAppComponent,
   ],
   imports: [
     MatCardModule,

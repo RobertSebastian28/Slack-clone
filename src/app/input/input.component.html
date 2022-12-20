@@ -91,7 +91,7 @@
       [ngModelOptions]="{ standalone: true }"
       [class.functionFont]="functionText"
       #input
-      placeholder="{{ component.textPlaceholder }} {{ component.channel }}"
+      placeholder="{{ component.textPlaceholder }} {{ fire.actChannel }}"
     />
     <div class="img-preview-container">
       <img class="img-preview" *ngIf="showPreview" [src]="fb" />
