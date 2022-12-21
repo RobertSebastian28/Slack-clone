@@ -2,67 +2,6 @@
   <div id="dialog"></div>
   <form class="form">
     <div class="icon-holder" *ngIf="formatting">
-      <p
-        (click)="openDialog()"
-        matTooltip="bold type"
-        matTooltipPosition="above"
-        matTooltipShowDelay="250"
-      >
-        B
-      </p>
-      <p
-        (click)="openDialog()"
-        matTooltip="italic type"
-        matTooltipPosition="above"
-        matTooltipShowDelay="250"
-      >
-        <i>I</i>
-      </p>
-      <p
-        (click)="openDialog()"
-        matTooltip="crossed out "
-        matTooltipPosition="above"
-        matTooltipShowDelay="250"
-      >
-        <s>S</s>
-      </p>
-      <div class="vr"></div>
-      <mat-icon
-        (click)="openDialog()"
-        matTooltip="link"
-        matTooltipPosition="above"
-        matTooltipShowDelay="250"
-        >add_link</mat-icon
-      >
-      <div
-        matTooltip=""
-        matTooltipPosition="above"
-        matTooltipShowDelay="250"
-        class="vr"
-      ></div>
-      <mat-icon
-        (click)="openDialog()"
-        matTooltip="numbered list"
-        matTooltipPosition="above"
-        matTooltipShowDelay="250"
-        >format_list_numbered</mat-icon
-      >
-      <mat-icon
-        (click)="openDialog()"
-        matTooltip="bullet list"
-        matTooltipPosition="above"
-        matTooltipShowDelay="250"
-        >format_list_bulleted</mat-icon
-      >
-      <div class="vr"></div>
-      <mat-icon
-        (click)="openDialog()"
-        matTooltip="block quote"
-        matTooltipPosition="above"
-        matTooltipShowDelay="250"
-        >align_horizontal_left</mat-icon
-      >
-      <div class="vr"></div>
       <mat-icon
         (click)="textToFunction()"
         matTooltip="code"
@@ -128,23 +67,6 @@
 
         <div class="vr white"></div>
         <mat-icon
-          (click)="openDialog()"
-          matTooltip="record video"
-          matTooltipPosition="above"
-          matTooltipShowDelay="250"
-          class="white"
-          >video_camera_front</mat-icon
-        >
-        <mat-icon
-          (click)="openDialog()"
-          matTooltip="record sound"
-          matTooltipPosition="above"
-          matTooltipShowDelay="250"
-          class="white"
-          >mic_none</mat-icon
-        >
-        <div class="vr white"></div>
-        <mat-icon
           (click)="isEmojiPickerVisible = !isEmojiPickerVisible"
           matTooltip="Emojis"
           matTooltipPosition="above"
@@ -152,15 +74,6 @@
           class="white"
           >tag_faces</mat-icon
         >
-        <p
-          (click)="openDialog()"
-          matTooltip="Link person"
-          matTooltipPosition="above"
-          matTooltipShowDelay="250"
-          class="white"
-        >
-          @
-        </p>
 
         <ng-container *ngIf="formatting; then isTrue; else isFalse">
         </ng-container>
@@ -202,14 +115,6 @@
         >
           <mat-icon>send</mat-icon>
         </button>
-        <div class="vr"></div>
-        <mat-icon
-          (click)="openDialog()"
-          matTooltip=" "
-          matTooltipPosition="above"
-          matTooltipShowDelay="250"
-          >keyboard_arrow_down</mat-icon
-        >
       </div>
     </div>
   </form>
