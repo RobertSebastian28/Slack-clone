@@ -2,7 +2,8 @@
   <div class="sidebarMenuChild">
     <div>
       <div class="sidebarIcon" (click)="showChannels()">
-        <mat-icon fontIcon="arrow_right"></mat-icon> Channels
+        <mat-icon *ngIf="!channelsActive;else arrow_down">arrow_right</mat-icon> Channels
+        <ng-template #arrow_down><mat-icon>arrow_drop_down</mat-icon></ng-template>
       </div>
       <div *ngIf="channelsActive" class="channels">
         <div
@@ -20,7 +21,8 @@
 
     <div>
       <div class="sidebarIcon" (click)="showDirectMessages()">
-        <mat-icon fontIcon="arrow_right"></mat-icon> Direktnachrichten
+        <mat-icon *ngIf="!directmessagesActive;else arrow_down">arrow_right</mat-icon> Direktnachrichten
+        <ng-template #arrow_down><mat-icon>arrow_drop_down</mat-icon></ng-template>
       </div>
       <div *ngIf="directmessagesActive" class="channels">
         <div
