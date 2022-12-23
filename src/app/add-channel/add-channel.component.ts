@@ -24,5 +24,4 @@ export class AddChannelComponent implements OnInit {
         console.log('channel added', result);
       })
   }
-
 }

@@ -26,10 +26,11 @@
       </div>
       <div *ngIf="directmessagesActive" class="channels">
         <div
+          (click)="loadDirektUserMessages(direktUserMessage.name)"
           class="sidebarIcon"
-          *ngFor="let directMessage of directMessages; let i = index"
+          *ngFor="let direktUserMessage of allDirektUserMessages; let i = index"
         >
-          <b> {{ directMessages[i] }} </b>
+          <b> {{ direktUserMessage.name }} </b>
         </div>
       </div>
     </div>

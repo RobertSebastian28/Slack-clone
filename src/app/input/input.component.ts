@@ -144,7 +144,7 @@ export class InputComponent implements OnInit {
         displayName: this.fireAuthUser.displayName,
         profilePic: 'suit_women.png',
         email: this.fireAuthUser.email,
-        channels: ['Angular', 'JavaSkript'],
+        channels: ['Angular', 'JavaScript'],
         directMessages: [],
       });
     }
