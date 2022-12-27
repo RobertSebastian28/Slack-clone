@@ -40,6 +40,9 @@ export class SignUpComponent implements OnInit {
       //next: () => this.createFirestoreUser(user),
       error: (error) => this.snackbar.open(error.message),
     });
+    setTimeout(() => {
+      this.snackbar.dismiss();
+    }, 2000);
   }
 
   switchToSignIn() {

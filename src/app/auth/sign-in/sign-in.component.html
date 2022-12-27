@@ -41,9 +41,17 @@
           <p>You do not have an account?</p>
         </div>
 
-        <button mat-raised-button color="accent" (click)="switchToSignUp()">
-          Create an account
+        <div>
+         <button mat-raised-button color="accent" (click)="switchToSignUp()">
+         Create an account
+         </button>
+        </div>
+        <div class="margin-top">
+         <button mat-raised-button color="accent" (click)="guestLogin()">
+          Guest login
         </button>
+        </div>
+        
       </app-form>
     </mat-card-content>
   </mat-card>

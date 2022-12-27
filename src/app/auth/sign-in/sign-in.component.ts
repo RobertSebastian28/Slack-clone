@@ -2,6 +2,7 @@ import { Component, OnInit, ChangeDetectionStrategy } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { Router } from '@angular/router';
+import { getExperimentalSetting } from '@firebase/util';
 import { AuthService } from '../auth.service';
 @Component({
   selector: 'app-sign-in',
@@ -30,9 +31,22 @@ export class SignInComponent implements OnInit {
       next: () => this.router.navigate(['output']),
       error: (error) => this.snackbar.open(error.message),
     });
+    setTimeout(() => {
+      this.snackbar.dismiss();
+    }, 2000);
   }
 
   switchToSignUp() {
     this.router.navigate(['signup']);
+  }
+
+  guestLogin() {
+    this.form = new FormGroup({
+      email: new FormControl('guest@gmail.com', [Validators.email]),
+      password: new FormControl('GastLogin', [Validators.minLength(6)]),
+    });
+    this.auth.signIn(this.form.value).subscribe({
+      next: () => this.router.navigate(['output']),
+    });
   }
 }
