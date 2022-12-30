@@ -1,29 +1,15 @@
 <mat-toolbar *ngIf="auth.isLoggedIn$ | async as user; else signIn">
   <div></div>
   <div class="headerFirstSection">
-    <mat-icon
-      (click)="openDialog()"
-      fontIcon="access_time"
-      matTooltip="Verlauf"
-    ></mat-icon>
+    <mat-icon (click)="openDialog()" fontIcon="access_time" matTooltip="Verlauf"></mat-icon>
     <input type="text" placeholder="Slack-Clone durchsuchen" />
   </div>
   <div class="headerSecondSection">
-    <mat-icon
-      (click)="openDialog()"
-      fontIcon="help"
-      matTooltip="Help"
-    ></mat-icon>
+    <mat-icon (click)="showInfo()" fontIcon="help" matTooltip="Help"></mat-icon>
 
     <img src="assets/img/profile.png" matTooltip="Profil" />
-    <button
-      *ngIf="auth.isLoggedIn$ | async as user"
-      mat-icon-button
-      (click)="signOut()"
-      matTooltip="Log out"
-      matTooltipPosition="below"
-      matTooltipShowDelay="250"
-    >
+    <button *ngIf="auth.isLoggedIn$ | async as user" mat-icon-button (click)="signOut()" matTooltip="Log out"
+      matTooltipPosition="below" matTooltipShowDelay="250">
       <mat-icon>logout</mat-icon>
     </button>
   </div>
@@ -34,3 +20,24 @@
     <p>Slack-Clone</p>
   </mat-toolbar>
 </ng-template>
+
+<div id="info-container" class="info-container">
+  <div class="info-text">
+    <h2>How do I start ?</h2>
+    <ul>
+      <li>
+        <p>You can click on the channels category and choose an active channel to post in.</p>
+      </li>
+      <li>
+        <p>You can click on the direct message category to send a direct message to a person.</p>
+      </li>
+      <li>
+        <p>You can also send pictures in any chat by clicking on the plus symbol in the lower left corner of the input window. </p>
+      </li>
+      <li>
+        <p>If you want to send emojis you can also do that in the input window. Click on the emoji symbol at the bottom left of the input window.</p>
+      </li>
+    </ul>
+    <button mat-raised-button color="accent" (click)="hideInfo()">Close</button>
+  </div>
+</div>

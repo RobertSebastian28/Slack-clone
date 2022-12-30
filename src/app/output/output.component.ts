@@ -36,13 +36,15 @@ export class OutputComponent implements OnInit {
   ) {}
 
   functionText = this.inputComponent.functionText;
+  seen:number = 1;
+  reactSeen: boolean = false;
 
   ngOnInit(): void {}
 
   scrollToBottom(): void {
     try {
       this.content.nativeElement.scrollTop =
-        this.content.nativeElement.scrollHeight;
+      this.content.nativeElement.scrollHeight;
     } catch (err) {
       console.log('output', err);
     }
@@ -87,5 +89,9 @@ export class OutputComponent implements OnInit {
       hr = ('0' + (date.getHours() + 1)).slice(-2);
 
     return [hr, min].join(':') + ' Uhr';
+  }
+
+  seenReact(i) {
+  document.getElementById("emoji-container-seen" + i).classList.remove("hidden");
   }
 }

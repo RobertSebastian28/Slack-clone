@@ -46,6 +46,10 @@
               [src]="message.pictureUrl"
             />
 
+            <div class="emo hidden" id="emoji-container-seen{{ i }}">
+              {{ emojis.white_check_mark + seen }} 
+            </div>
+
             <div
               *ngIf="message.threadMessages.length > 0"
               class="thread-answ"
@@ -69,8 +73,8 @@
 
           <div class="icon-holder">
             <div class="icon-bar">
-              <div class="emo" (click)="openDialog()">
-                {{ emojis.white_check_mark }}
+              <div class="emo" id="emoji-container{{ i }}" (click)="seenReact(i)">
+                {{ emojis.white_check_mark }} 
               </div>
               <mat-icon (click)="openThread(message.ID); thread.open()"
                 >comment</mat-icon>

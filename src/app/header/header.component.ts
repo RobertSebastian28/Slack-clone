@@ -8,9 +8,9 @@ import { AuthService } from '../auth/auth.service';
   styleUrls: ['./header.component.scss'],
 })
 export class HeaderComponent implements OnInit {
-  constructor(public auth: AuthService, private router: Router) {}
+  constructor(public auth: AuthService, private router: Router) { }
 
-  ngOnInit(): void {}
+  ngOnInit(): void { }
 
   signOut() {
     this.auth.signOut().subscribe({
@@ -28,4 +28,15 @@ export class HeaderComponent implements OnInit {
       dialogContainer.style.display = 'none';
     }, 1800);
   }
+
+  showInfo() {
+    let infoBox: any = document.getElementById('info-container');
+    infoBox.style.display = "flex";
+  }
+
+  hideInfo() {
+    let infoBox: any = document.getElementById('info-container');
+    infoBox.style.display = "none";
+  }
 }
+
