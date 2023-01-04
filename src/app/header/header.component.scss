@@ -71,3 +71,14 @@ mat-toolbar {
     text-align: start;
   }
 }
+
+@media only screen and (max-width: 890px) {
+  .info-container {
+    width: 300px;
+
+    .info-text {
+      padding-right: 20px;
+      text-align: center;
+    }
+  }
+}

@@ -4,6 +4,19 @@ h3 {
   margin-bottom: 2px;
 }
 
+.output-header {
+  justify-content: space-between;
+}
+
+.menu-icon {
+  display: none;
+  cursor: pointer;
+}
+
+#sidebar-container {
+  display: flex;
+}
+
 .user {
   display: flex;
   position: relative;
@@ -147,16 +160,6 @@ mat-drawer-content {
   height: calc(100vh - 64px);
 }
 
-.sidebarHeader {
-  mat-toolbar {
-    background-color: rgb(82, 38, 83);
-  }
-
-  :hover {
-    background-color: rgb(74, 21, 75);
-  }
-}
-
 .channel-holder {
   display: flex;
   flex-direction: column;
@@ -169,6 +172,16 @@ mat-drawer-content {
 
   .input {
     margin: 0 $spacing-S $spacing-S;
+  }
+}
+
+.sidebarHeader {
+  mat-toolbar {
+    background-color: rgb(82, 38, 83);
+  }
+
+  :hover {
+    background-color: rgb(74, 21, 75);
   }
 }
 
@@ -256,5 +269,34 @@ mat-drawer-content {
   }
 }
 
+@media only screen and (max-width: 920px) {
+  #sidebar-container {
+    display: none;
+    width: 100%;
+  }
+  .menu-icon {
+    display: flex;
+  }
+}
 
+@media only screen and (min-width: 921px) {
+  #sidebar-container {
+    display: flex !important;
+  }
+}
 
+@media only screen and (max-width: 760px) {
+  .thread-container {
+    width: 100%;
+  }
+  mat-drawer-content {
+    height: calc(100vh - 56px);
+  }
+} 
+
+@media only screen and (max-width: 470px) {
+  .uploaded-image {
+    width: 200px;
+    height: 200px;
+  }
+}

@@ -17,6 +17,7 @@ export class OutputComponent implements OnInit {
   emojis: any = Emojis;
   index = '';
   hoverReact = false;
+  showFiller = false;
 
   component: object = {
     name: 'output',
@@ -33,18 +34,17 @@ export class OutputComponent implements OnInit {
     private firestore: Firestore,
     public fire: FireService,
     private inputComponent: InputComponent
-  ) {}
+  ) { }
 
   functionText = this.inputComponent.functionText;
-  seen:number = 1;
-  reactSeen: boolean = false;
+  seen: number = 1;
 
-  ngOnInit(): void {}
+  ngOnInit(): void { }
 
   scrollToBottom(): void {
     try {
       this.content.nativeElement.scrollTop =
-      this.content.nativeElement.scrollHeight;
+        this.content.nativeElement.scrollHeight;
     } catch (err) {
       console.log('output', err);
     }
@@ -92,6 +92,18 @@ export class OutputComponent implements OnInit {
   }
 
   seenReact(i) {
-  document.getElementById("emoji-container-seen" + i).classList.remove("hidden");
+    document.getElementById("emoji-container-seen" + i).classList.remove("hidden");
+  }
+
+  showResponsiveSideBar() {
+    let sidebarContainer = document.getElementById('sidebar-container');
+    sidebarContainer.style.display = 'flex';
+  }
+
+  hideResponsiveSideBar() {
+    if (window.innerWidth <= 920) {
+      let sidebarContainer = document.getElementById('sidebar-container');
+      sidebarContainer.style.display = 'none';
+    }
   }
 }

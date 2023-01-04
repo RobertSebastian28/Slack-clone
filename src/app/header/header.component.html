@@ -1,13 +1,11 @@
 <mat-toolbar *ngIf="auth.isLoggedIn$ | async as user; else signIn">
   <div></div>
   <div class="headerFirstSection">
-    <mat-icon (click)="openDialog()" fontIcon="access_time" matTooltip="Verlauf"></mat-icon>
-    <input type="text" placeholder="Slack-Clone durchsuchen" />
+    <span>Slack-Clone</span>
   </div>
   <div class="headerSecondSection">
     <mat-icon (click)="showInfo()" fontIcon="help" matTooltip="Help"></mat-icon>
 
-    <img src="assets/img/profile.png" matTooltip="Profil" />
     <button *ngIf="auth.isLoggedIn$ | async as user" mat-icon-button (click)="signOut()" matTooltip="Log out"
       matTooltipPosition="below" matTooltipShowDelay="250">
       <mat-icon>logout</mat-icon>

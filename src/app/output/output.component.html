@@ -1,5 +1,5 @@
-<mat-drawer-container class="example-container">
-  <mat-drawer mode="side" opened>
+<mat-drawer-container>
+  <mat-drawer id="sidebar-container" mode="side" opened>
     <div class="sidebarHeader">
       <mat-toolbar>
         <span>Slack-Clone</span>
@@ -8,25 +8,22 @@
     <div class="sidebar">
       <app-sidebar (newSideTopingEvent)="updateChannel($event)"></app-sidebar>
       <div class="sidebar-active">
-        <div matTooltip="Active-Sidebar" class="sidebar-active-text">
-          # {{ fire.actChannel }}
+        <div matTooltip="Active-Sidebar" class="sidebar-active-text" id="sidebar-active-text">
+          # {{ fire.actChannel  }}
         </div>
       </div>
     </div>
   </mat-drawer>
 
   <mat-drawer-content>
-    <mat-toolbar>
+    <mat-toolbar class="output-header">
       <span># {{ fire.actChannel }}</span>
+      <div><img class="menu-icon" (click)="showResponsiveSideBar()" src="assets/img/icons/menu.ico"></div>
     </mat-toolbar>
 
     <div class="channel-holder">
       <div class="channel" #content>
-        <div
-          class="user"
-          *ngFor="let message of channel; let i = index"
-          id="user-container{{ i }}"
-        >
+        <div class="user" *ngFor="let message of channel; let i = index" id="user-container{{ i }}">
           <img class="profile-pic" src="assets/img/{{ message.profilePic }}" />
 
           <div class="message">
@@ -40,30 +37,23 @@
             <span>{{ message.message }}</span>
             <span>{{ message.functionText }}</span>
 
-            <img
-              class="uploaded-image"
-              *ngIf="message.pictureUrl"
-              [src]="message.pictureUrl"
-            />
+            <img class="uploaded-image" *ngIf="message.pictureUrl" [src]="message.pictureUrl" />
 
             <div class="emo hidden" id="emoji-container-seen{{ i }}">
-              {{ emojis.white_check_mark + seen }} 
+              {{ emojis.white_check_mark + seen }}
             </div>
 
-            <div
-              *ngIf="message.threadMessages.length > 0"
-              class="thread-answ"
-              (click)="openThread(message.ID); thread.open()"
-            >
+            <div *ngIf="message.threadMessages.length > 0" class="thread-answ"
+              (click)="openThread(message.ID); thread.open()">
               {{ message.threadMessages.length }} Antworten
               <div class="thread-answ-info">
                 <div class="open">
                   Letzte Antwort
                   {{
-                    convertTimeStamp(
-                      message.threadMessages[message.threadMessages.length - 1]
-                        .timeStamp
-                    )
+                  convertTimeStamp(
+                  message.threadMessages[message.threadMessages.length - 1]
+                  .timeStamp
+                  )
                   }}
                 </div>
                 <div class="hidden">Open Thread --></div>
@@ -74,10 +64,9 @@
           <div class="icon-holder">
             <div class="icon-bar">
               <div class="emo" id="emoji-container{{ i }}" (click)="seenReact(i)">
-                {{ emojis.white_check_mark }} 
+                {{ emojis.white_check_mark }}
               </div>
-              <mat-icon (click)="openThread(message.ID); thread.open()"
-                >comment</mat-icon>
+              <mat-icon (click)="openThread(message.ID); thread.open()">comment</mat-icon>
             </div>
           </div>
         </div>
@@ -88,7 +77,7 @@
     </div>
   </mat-drawer-content>
 
-  <mat-drawer #thread mode="side" closed position="end">
+  <mat-drawer class="thread-container" #thread mode="side" closed position="end">
     <mat-toolbar class="thread-header">
       <div>
         <h2>Thread</h2>

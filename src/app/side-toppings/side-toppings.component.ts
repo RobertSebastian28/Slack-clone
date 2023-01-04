@@ -1,3 +1,4 @@
+import { outputAst } from '@angular/compiler';
 import {
   Component,
   EventEmitter,
@@ -13,6 +14,7 @@ import { DirectUserMessage } from 'src/assets/models/directUserMessage';
 import { Message } from 'src/assets/models/message.class';
 import { AddChannelComponent } from '../add-channel/add-channel.component';
 import { FireService } from '../fire.service';
+import { OutputComponent } from '../output/output.component';
 
 @Component({
   selector: 'app-side-toppings',
@@ -23,6 +25,7 @@ export class SideToppingsComponent implements OnInit {
   topics = ['Channels', 'Direktnachrichten'];
 
   @Output() newSideTopingEvent = new EventEmitter<any>();
+
   channelArray: any = [];
   userArray: any = [];
 
@@ -38,7 +41,8 @@ export class SideToppingsComponent implements OnInit {
   constructor(
     public dialog: MatDialog,
     private firestore: AngularFirestore,
-    public fire: FireService
+    public fire: FireService,
+    private outputComponent: OutputComponent
   ) { }
 
   ngOnInit(): void {
@@ -104,5 +108,9 @@ export class SideToppingsComponent implements OnInit {
       });
       this.newSideTopingEvent.emit(this.userArray);
     });
+  }
+
+  hideSidebar() {
+    this.outputComponent.hideResponsiveSideBar();
   }
 }
